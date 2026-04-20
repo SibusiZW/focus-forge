@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <SidebarProvider>
                     <AppSidebar />
 
-                    <main className="p-4">
+                    <main className="p-4 w-full">
                         <SidebarTrigger />
                         {children}
                     </main>
