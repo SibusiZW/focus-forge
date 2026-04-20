@@ -11,7 +11,7 @@ export default function IntroCard() {
             <Show when={'signed-in'}>
                 <Button variant={'link'} className="w-full text-white bg-blue-700 mb-4">
                     <Brain />
-                    <Link href={"#"}>I'm ready to improve my studying</Link>
+                    <Link href={"/dashboard"}>I'm ready to improve my studying</Link>
                 </Button>
             </Show>
             <Show when={'signed-out'}>
