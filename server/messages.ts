@@ -16,4 +16,10 @@ export async function getMessagesCount() {
     }
 }
 
-export async function createMessage() {}
+export async function createMessage(title: string, level: string, struggles: string, timeLeft: string, socialCondition: string, mentalHealth: string) {
+    const user = await getUser();
+    const userId = user?.id
+    if (userId) {
+        await db.insert(messages).values({ title: title, level: level, strugglesDesc: struggles, timeLeftDesc: timeLeft, socialDesc: socialCondition, mentalDesc: mentalHealth, userId: userId })
+    }
+}
