@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import { NavMain } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
 import { Brander } from "@/components/brander"
@@ -11,9 +9,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { TerminalSquareIcon, BotIcon, Brain } from "lucide-react"
-import { getMessages } from "@/server/messages"
-
-const messages = await getMessages()
+import { getMessages } from "@/server/messages";
 
 const data = {
   brand: {
@@ -43,12 +39,13 @@ const data = {
         <BotIcon
         />
       ),
-      items: messages?.map(m => m ? { title: m.title, url: `/chat/${m.id}` }: m),
+      items: []
     },
   ],
 }
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  
   
   return (
     <Sidebar collapsible="icon" {...props}>
