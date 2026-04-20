@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 
 import { NavMain } from "@/components/nav-main"
@@ -12,9 +10,10 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon, Brain } from "lucide-react"
+import { TerminalSquareIcon, BotIcon, Brain } from "lucide-react"
+import { getMessages } from "@/server/messages"
 
-const arr = [{title: 'gh', url: '#'}]
+const messages = await getMessages()
 
 const data = {
   brand: {
@@ -38,18 +37,19 @@ const data = {
       ],
     },
     {
-      title: "Recent chats",
+      title: "My chats",
       url: "#",
       icon: (
         <BotIcon
         />
       ),
-      items: [],
+      items: messages?.map(m => m ? { title: m.title, url: `/chat/${m.id}` }: m),
     },
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
