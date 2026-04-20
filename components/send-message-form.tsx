@@ -8,6 +8,7 @@ import { Brain, Loader2, Trash2 } from "lucide-react"
 import { generateResponse } from "@/server/openrouter"
 import { toast } from "sonner"
 import { createMessage } from "@/server/messages"
+import ReactMarkdown from 'react-markdown';
 
 export default function SendMessageForm() {
     
@@ -69,7 +70,9 @@ export default function SendMessageForm() {
                     Clear fields
                 </Button>
 
-                <div className="border border-zinc-200 p-4 rounded-md shadow-md overflow-y-auto relative">{response}</div>
+                <div className="border border-zinc-200 p-4 rounded-md shadow-md overflow-y-auto relative">
+                    <ReactMarkdown>{response}</ReactMarkdown>
+                </div>
             </form>
         </div>
     )
