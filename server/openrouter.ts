@@ -5,9 +5,10 @@ import { OpenRouter } from '@openrouter/sdk'
 const client = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY! })
 
 export async function generateResponse(level: string, struggles: string, timeLeft: string, socialCondition: string, mentalHealth: string) {
-    const response = await client.chat.send({
+    try {
+        const response = await client.chat.send({
         chatRequest: {
-            model: 'google/gemma-4-31b-it:free',
+            model: 'google/gemma-4-31b-it',
             messages: [
                 { role: 'system', content: "You are a retired powerhouse psychologist which specialises in child education. You also use your vast experience to formulate effective and flexible study plans for students at different academic levels. Your task is to formulate a study plan for a user when given some info involving the user your answers should work for all genders and should be clear and non-biased" },
                 { role: 'user', content: `
@@ -23,4 +24,8 @@ export async function generateResponse(level: string, struggles: string, timeLef
     })
 
     return response.choices[0].message.content
+    } catch (e) {
+        console.error(e)
+        return "An error occured!!"
+    }
 }

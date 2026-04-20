@@ -15,3 +15,5 @@ export async function getMessagesCount() {
         return count
     }
 }
+
+export async function createMessage() {}
