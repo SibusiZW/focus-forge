@@ -7,5 +7,6 @@ export const messages = pgTable('messages', {
     timeLeftDesc: text().notNull(),
     socialDesc: text().notNull(),
     mentalDesc: text().notNull(),
+    userId: text().notNull(),
     dateCreated: timestamp().defaultNow()
 })
