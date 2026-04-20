@@ -33,7 +33,7 @@ const data = {
       items: [
         {
           title: "Have a new chat",
-          url: "#",
+          url: "/dashboard/new",
         },
       ],
     },
