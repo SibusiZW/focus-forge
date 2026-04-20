@@ -33,7 +33,7 @@ export default function SendMessageForm() {
 
     useEffect(() => {
         const updateDb = async () => {
-            await createMessage(title, level, struggles, timeLeft, socialCondition, mentalHealth);
+            await createMessage(title, level, struggles, timeLeft, socialCondition, mentalHealth, response);
         }
 
         if (response.trim() !== '') {
