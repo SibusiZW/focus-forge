@@ -1,10 +1,8 @@
-import { getUser } from "@/server/auth"
 import { getMessagesCount } from "@/server/messages";
 
 export default async function CountCard() {
 
-    const user = await getUser();
-    const count = await getMessagesCount(user?.id)
+    const count = await getMessagesCount()
 
     return (
         <div className="flex flex-col p-10 bg-gray-100 w-full rounded-md border border-blue-200">
