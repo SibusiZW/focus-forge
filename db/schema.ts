@@ -12,3 +12,5 @@ export const messages = pgTable('messages', {
     aiResponse: text().notNull(),
     dateCreated: timestamp().defaultNow()
 })
+
+export type Message = typeof messages.$inferSelect;

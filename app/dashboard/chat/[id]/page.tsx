@@ -1,13 +1,22 @@
+'use client'
+
+import DisplayMessageForm from "@/components/display-message-form";
+import { use } from "react"
+
 interface ChatPageProps {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
-export default async function ChatPage({ params }: ChatPageProps) {
+export default function ChatPage({ params }: ChatPageProps) {
+
+    const { id } = use(params);
+
     return (
-        <div>
-            {params.id}
+        <div className="p-6 items-center justify-center">
+            
+            <DisplayMessageForm id={id}/>  
         </div>
     )
 }
