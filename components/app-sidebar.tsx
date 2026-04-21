@@ -34,6 +34,10 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
             title: "Have a new chat",
             url: "/dashboard/new",
           },
+          {
+            title: "Delete chat history",
+            url: "/dashboard/delete",
+          }
         ],
       },
       {

@@ -38,3 +38,12 @@ export async function getSingleMessage(id: string) {
     const allMessages = await db.select().from(messages).where(eq(messages.id, id)).limit(1)
     return allMessages[0];
 }
+
+export async function deleteChatHistory() {
+    const user = await getUser();
+    const userId = user?.id;
+
+    if (userId) {
+        await db.delete(messages).where(eq(messages.userId, userId))
+    }
+}
