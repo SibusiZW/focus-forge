@@ -9,43 +9,44 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { TerminalSquareIcon, BotIcon, Brain } from "lucide-react"
-import { getMessages } from "@/server/messages";
-
-const data = {
-  brand: {
-    name: "FocusForge",
-    logo: <Brain />
-  },
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: (
-        <TerminalSquareIcon
-        />
-      ),
-      isActive: true,
-      items: [
-        {
-          title: "Have a new chat",
-          url: "/dashboard/new",
-        },
-      ],
-    },
-    {
-      title: "My chats",
-      url: "#",
-      icon: (
-        <BotIcon
-        />
-      ),
-      items: []
-    },
-  ],
-}
+import { getMessages } from "@/server/messages"
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  
+
+  const messsages = await getMessages();
+
+  const data = {
+    brand: {
+      name: "FocusForge",
+      logo: <Brain />
+    },
+    navMain: [
+      {
+        title: "Playground",
+        url: "#",
+        icon: (
+          <TerminalSquareIcon
+          />
+        ),
+        isActive: true,
+        items: [
+          {
+            title: "Have a new chat",
+            url: "/dashboard/new",
+          },
+        ],
+      },
+      {
+        title: "My chats",
+        url: "#",
+        icon: (
+          <BotIcon
+          />
+        ),
+        items: messsages?.map(m => m ? { title: m.title, url: `/dashboard/chat/${m.id}` } : m)
+      },
+    ],
+}  
   
   return (
     <Sidebar collapsible="icon" {...props}>
